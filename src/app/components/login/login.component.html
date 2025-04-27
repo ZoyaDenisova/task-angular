@@ -1,0 +1,38 @@
+<mat-card class="form-card">
+  <mat-card-header>
+    <mat-card-title>
+      Вход в систему
+    </mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Имя пользователя</mat-label>
+        <input matInput formControlName="username" placeholder="Введите имя пользователя">
+        <mat-error *ngIf="form.get('username')?.hasError('required')">
+          Имя пользователя обязательно
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Введите пароль">
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Пароль обязателен
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <div class="login-actions">
+        <a routerLink="/register">Нет аккаунта? Зарегистрироваться</a>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          Войти
+        </button>
+      </div>
+    </mat-card-actions>
+
+  </form>
+</mat-card>

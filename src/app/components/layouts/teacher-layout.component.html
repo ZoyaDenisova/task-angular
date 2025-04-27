@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <button mat-button (click)="goHome()">На главную</button>
+
+  <span style="flex: 1 1 auto;"></span>
+  <span>Роль: {{ role }}</span>
+  <span style="margin: 0 8px;">|</span>
+  <span>Имя: {{ username }}</span>
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-button (click)="logout()">Выйти</button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

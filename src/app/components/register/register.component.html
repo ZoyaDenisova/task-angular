@@ -1,0 +1,50 @@
+<!-- register.component.html -->
+<mat-card class="form-card">
+  <mat-card-header>
+    <mat-card-title>
+      Регистрация
+    </mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-card-content>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Имя пользователя</mat-label>
+      <input matInput formControlName="username" placeholder="Введите имя пользователя">
+      <mat-error *ngIf="form.get('username')?.hasError('required')">
+        Имя пользователя обязательно
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Пароль</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Введите пароль">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Пароль обязателен
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Роль</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="student">Студент</mat-option>
+        <mat-option value="teacher">Преподаватель</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('role')?.hasError('required')">
+        Выберите роль
+      </mat-error>
+    </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="register-actions">
+      <a routerLink="/login">Есть аккаунт? Авторизоваться</a>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Зарегистрироваться
+      </button>
+    </div>
+  </mat-card-actions>
+
+  </form>
+</mat-card>

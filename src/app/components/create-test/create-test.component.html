@@ -1,0 +1,90 @@
+<mat-card class="form-card">
+  <mat-card-header>
+    <mat-card-title>Создание нового теста</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-card-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Название теста</mat-label>
+      <input matInput formControlName="title" placeholder="Введите название">
+      <mat-error *ngIf="form.get('title')?.hasError('required')">
+        Название обязательно
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="timerEnabled">
+      Включить таймер
+    </mat-checkbox>
+
+    <mat-form-field appearance="outline" class="full-width" *ngIf="form.get('timerEnabled')?.value">
+      <mat-label>Время на тест (секунды)</mat-label>
+      <input matInput type="number" formControlName="timerSeconds" min="10" placeholder="Укажите время">
+      <mat-error *ngIf="form.get('timerSeconds')?.hasError('min')">
+        Минимальное время — 10 секунд
+      </mat-error>
+    </mat-form-field>
+
+    <div formArrayName="questions" class="questions-section">
+      <div *ngFor="let q of questions.controls; let i = index" [formGroupName]="i">
+
+        <mat-card class="question-card">
+          <mat-card-header>
+            <mat-card-title>
+              Вопрос {{ i + 1 }}
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Текст вопроса</mat-label>
+              <input matInput formControlName="text" placeholder="Введите текст вопроса">
+              <mat-error *ngIf="q.get('text')?.hasError('required')">
+                Вопрос обязателен
+              </mat-error>
+            </mat-form-field>
+
+            <div formArrayName="options" class="options-section">
+              <div *ngFor="let optCtrl of getOptionsControls(q); let j = index">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Вариант ответа {{ j + 1 }}</mat-label>
+                  <input matInput [formControlName]="j" placeholder="Введите вариант">
+                </mat-form-field>
+              </div>
+              <button mat-button type="button" color="primary" (click)="addOption(i)">
+                Добавить вариант ответа
+              </button>
+            </div>
+
+            <div class="question-options">
+              <mat-form-field appearance="outline">
+                <mat-label>Индекс правильного ответа</mat-label>
+                <input matInput type="number" formControlName="correctOptionIndex">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Баллы за правильный ответ</mat-label>
+                <input matInput type="number" formControlName="points" min="1">
+                <mat-error *ngIf="q.get('points')?.hasError('min')">
+                  Баллы должны быть больше 0
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <button mat-raised-button color="warn" type="button" (click)="removeQuestion(i)">
+              Удалить вопрос
+            </button>
+          </mat-card-content>
+
+        </mat-card>
+
+      </div>
+    </div>
+    </mat-card-content>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="button" (click)="addQuestion()">Добавить вопрос</button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">Сохранить тест</button>
+    </div>
+
+  </form>
+</mat-card>

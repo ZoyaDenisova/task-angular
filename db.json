@@ -1,0 +1,275 @@
+{
+  "users": [
+    {
+      "id": "a41e",
+      "username": "1",
+      "password": "1",
+      "role": "student"
+    },
+    {
+      "id": "7b19",
+      "username": "2",
+      "password": "123",
+      "role": "teacher"
+    },
+    {
+      "id": "f07e",
+      "username": "3",
+      "password": "3",
+      "role": "student"
+    }
+  ],
+  "tests": [
+    {
+      "id": "068d",
+      "title": "Тест1",
+      "timerEnabled": false,
+      "timerSeconds": 0,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Вопрос1",
+          "options": [
+            "1",
+            "2"
+          ],
+          "correctOptionIndex": 1,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": "ad60",
+      "title": "Тест2",
+      "timerEnabled": true,
+      "timerSeconds": 11,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Вопрос1",
+          "options": [
+            "1",
+            "2",
+            "3"
+          ],
+          "correctOptionIndex": 2,
+          "points": 3
+        },
+        {
+          "id": 2,
+          "text": "Вопрос2",
+          "options": [
+            "1",
+            "2"
+          ],
+          "correctOptionIndex": 0,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": "b6fc",
+      "title": "Тест3",
+      "timerEnabled": true,
+      "timerSeconds": 12,
+      "questions": [
+        {
+          "id": 1,
+          "text": "Ответ2",
+          "options": [
+            "2",
+            "Ответ1"
+          ],
+          "correctOptionIndex": 1,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "628c",
+      "title": "2323",
+      "timerEnabled": false,
+      "timerSeconds": 0,
+      "questions": [
+        {
+          "id": 1,
+          "text": "1",
+          "options": [
+            "2",
+            "1"
+          ],
+          "correctOptionIndex": 0,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "id": "aea7",
+      "title": "123123",
+      "timerEnabled": true,
+      "timerSeconds": 333,
+      "questions": [
+        {
+          "id": 1,
+          "text": "4124",
+          "options": [
+            "122",
+            "1212",
+            "333"
+          ],
+          "correctOptionIndex": 0,
+          "points": 1
+        },
+        {
+          "id": 2,
+          "text": "32131",
+          "options": [
+            "222",
+            "2222"
+          ],
+          "correctOptionIndex": 0,
+          "points": 1
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "1155",
+      "testId": "ad60",
+      "testTitle": "Тест2",
+      "userId": "a41e",
+      "userName": "1",
+      "score": 0,
+      "date": "2025-04-27T18:35:59.174Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": null,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        },
+        {
+          "questionId": 2,
+          "selectedOptionIndex": null,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        }
+      ]
+    },
+    {
+      "id": "de7a",
+      "testId": "b6fc",
+      "testTitle": "Тест3",
+      "userId": "a41e",
+      "userName": "1",
+      "score": 2,
+      "date": "2025-04-27T18:53:03.115Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": 1,
+          "isCorrect": true,
+          "pointsAwarded": 2
+        }
+      ]
+    },
+    {
+      "id": "6af6",
+      "testId": "068d",
+      "testTitle": "Тест1",
+      "userId": "f07e",
+      "userName": "3",
+      "score": 1,
+      "date": "2025-04-27T21:05:11.740Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": 1,
+          "isCorrect": true,
+          "pointsAwarded": 1
+        }
+      ]
+    },
+    {
+      "id": "5cf4",
+      "testId": "068d",
+      "testTitle": "Тест1",
+      "userId": "a41e",
+      "userName": "1",
+      "score": 0,
+      "date": "2025-04-27T21:05:45.435Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": 0,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        }
+      ]
+    },
+    {
+      "id": "c58c",
+      "testId": "628c",
+      "testTitle": "2323",
+      "userId": "a41e",
+      "userName": "1",
+      "score": 0,
+      "date": "2025-04-27T21:13:46.486Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": 1,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        }
+      ]
+    },
+    {
+      "id": "0844",
+      "testId": "aea7",
+      "testTitle": "123123",
+      "userId": "a41e",
+      "userName": "1",
+      "score": 0,
+      "date": "2025-04-27T21:47:30.443Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": null,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        },
+        {
+          "questionId": 2,
+          "selectedOptionIndex": null,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        }
+      ]
+    },
+    {
+      "id": "8be7",
+      "testId": "aea7",
+      "testTitle": "123123",
+      "userId": "f07e",
+      "userName": "3",
+      "score": 1,
+      "date": "2025-04-27T21:47:54.627Z",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedOptionIndex": 0,
+          "isCorrect": true,
+          "pointsAwarded": 1
+        },
+        {
+          "questionId": 2,
+          "selectedOptionIndex": null,
+          "isCorrect": false,
+          "pointsAwarded": 0
+        }
+      ]
+    }
+  ]
+}

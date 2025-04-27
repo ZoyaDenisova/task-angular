@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <span>Доступные тесты</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="history()">Моя история</button>
+</mat-toolbar>
+
+<div class="test-list">
+  <mat-card *ngFor="let t of tests" class="test-card">
+    <mat-card-header>
+      <mat-card-title>{{ t.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="test-card-content">
+      <p>Количество вопросов: {{ t.questions.length }}</p>
+      <p *ngIf="t.timerEnabled">Таймер: {{ t.timerSeconds }} секунд</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <!-- Если тест не пройден -->
+      <button *ngIf="!t.completed"
+              mat-raised-button
+              color="primary"
+              (click)="take(t)">
+        Начать тест
+      </button>
+
+      <!-- Если тест уже пройден -->
+      <button *ngIf="t.completed"
+              mat-raised-button
+              disabled>
+        Тест пройден
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>
+
+<div *ngIf="!tests.length" class="no-data">
+  Нет доступных тестов.
+</div>

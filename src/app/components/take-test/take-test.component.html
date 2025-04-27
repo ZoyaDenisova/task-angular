@@ -1,0 +1,44 @@
+<mat-card *ngIf="test">
+  <mat-card-header>
+    <mat-card-title>{{ test.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="test-card-content">
+  <div *ngIf="test.timerEnabled && !isFinished" class="timer">
+    Время осталось: {{ timeLeft }} сек.
+  </div>
+
+  <div *ngIf="test.questions.length && !isFinished">
+    <h3>Вопрос {{ currentQ + 1 }} из {{ test.questions.length }}</h3>
+
+    <p>{{ test.questions[currentQ].text }}</p>
+
+    <mat-radio-group (change)="select($event.value)">
+      <mat-radio-button
+        *ngFor="let option of test.questions[currentQ].options; let i = index"
+        [value]="i"
+        [disabled]="isFinished">
+        {{ option }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="next()"
+        [disabled]="isFinished">
+        {{ currentQ === test.questions.length - 1 ? 'Завершить' : 'Далее' }}
+      </button>
+    </div>
+  </div>
+  </mat-card-content>
+
+  <div *ngIf="isFinished" class="finished">
+    <h3>Тест завершён.</h3>
+    <p>Вы будете перенаправлены через несколько секунд...</p>
+  </div>
+</mat-card>
+
+<div *ngIf="!test" class="loading">
+  Загрузка теста...
+</div>
