@@ -1,59 +1,126 @@
-# TaskAngular
+# Система тестирования студентов на Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+## Цель проекта
+Разработка учебного веб-приложения на Angular для создания, прохождения и оценки тестов.
+Проект направлен на освоение работы с компонентами, сервисами, роутингом, формами, HTTP-запросами и взаимодействием с Mock API.
 
-## Development server
+## Функциональность
 
-To start a local development server, run:
+### Для преподавателей (авторов тестов)
+Регистрация и вход в систему с ролью "teacher".
+
+Создание новых тестов:
+- Ввод названия теста.
+- Добавление вопросов типа "одиночный выбор" с вариантами ответов.
+- Указание правильного ответа.
+- Настройка таймера на выполнение теста (опционально).
+
+Просмотр списка созданных тестов.
+
+Просмотр результатов тестирования студентов по каждому тесту:
+- Имя студента.
+- Набранные баллы.
+- Дата прохождения теста.
+
+### Для студентов
+Регистрация и вход в систему с ролью "student".
+
+Просмотр списка доступных тестов.
+
+Прохождение теста:
+- Ввод имени студента.
+- Последовательное отображение вопросов с вариантами ответов.
+- Поддержка таймера (если задан преподавателем).
+
+Завершение теста с выводом итогового количества правильных ответов.
+
+Сохранение результата тестирования.
+
+Просмотр истории своих попыток прохождения тестов.
+
+## Технологический стек
+
+### Frontend
+- Angular 17+ (Standalone Components)
+- Angular Material (для стилизации)
+- RxJS (обработка асинхронных запросов)
+
+### Backend
+- JSON Server (server-json) для имитации API (/api/users, /api/tests, /api/results)
+
+### Инструменты разработки
+- Git (контроль версий)
+- ESLint, Prettier (стандартизация кода)
+
+## Структура действий пользователя
+
+### Регистрация
+- Страница /register
+- Заполнить имя пользователя, пароль, выбрать роль (teacher или student).
+- После успешной регистрации — переход на страницу авторизации.
+
+### Авторизация
+- Страница /login
+- Ввод логина и пароля.
+- В зависимости от роли пользователя — редирект на /teacher или /student.
+
+### Для учителя
+- /teacher — панель учителя:
+  - Список созданных тестов.
+  - Кнопка для создания нового теста.
+- /teacher/create — создание теста:
+  - Форма с добавлением вопросов и вариантов ответов.
+  - Возможность включить таймер.
+- /teacher/results/:id — просмотр результатов по тесту:
+  - Таблица студентов и их результатов.
+
+### Для студента
+- /student — панель студента:
+  - Список доступных тестов.
+- /student/take/:id — прохождение теста:
+  - Отображение вопросов и вариантов ответов.
+  - Отправка ответов на сервер.
+- /student/history — история прохождения тестов:
+  - Просмотр прошлых результатов.
+
+## Реализованное в проекте
+- SPA-приложение на Angular с роутингом и защитой маршрутов.
+- Реактивные формы с валидацией.
+- Работа с мок-API через HttpClient.
+- Хранение пользователей, тестов и результатов через JSON Server.
+- Аутентификация и авторизация пользователей.
+- Состояние текущего пользователя сохраняется через localStorage.
+- Логика отображения контента в зависимости от роли пользователя.
+- Защита маршрутов через AuthGuard и RoleGuard.
+- Использование Angular Material компонентов (mat-card, mat-form-field, mat-toolbar, mat-button, mat-input, и другие).
+
+## Запуск проекта
+
+Установить зависимости:
+
+```bash
+npm install
+```
+
+Запустить Angular-приложение:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Запустить JSON Server для имитации API:
 
 ```bash
-ng generate component component-name
+npm install -g json-server
+json-server --watch db.json --port 3000
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Пример db.json для старта:
 
-```bash
-ng generate --help
+```json
+{
+  "users": [],
+  "tests": [],
+  "results": []
+}
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
